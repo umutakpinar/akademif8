@@ -14,6 +14,15 @@ class _LoginPageState extends State<LoginPage> {
   var usernamecontroller = TextEditingController();
   var username = "";
   var password = "";
+
+  //simdilik giris yapmak kolay olsun diye
+  @override
+  void initState() {
+    super.initState();
+    usernamecontroller.text = username = "akademioverflow";
+    passcontroller.text = password = "123456";
+  }
+
   final GlobalKey<FormState> _formGlobalKey = GlobalKey();
   @override
   Widget build(BuildContext context) {
@@ -90,7 +99,7 @@ class _LoginPageState extends State<LoginPage> {
                                     },
                                     decoration: const InputDecoration(
                                       border: OutlineInputBorder(),
-                                      labelText: 'akademioverflow',
+                                      labelText: 'Username (akademioverflow)',
                                     ),
                                      validator: (value){
                                        if(value != null){
@@ -115,7 +124,7 @@ class _LoginPageState extends State<LoginPage> {
                                      },
                                     decoration: const InputDecoration(
                                       border: OutlineInputBorder(),
-                                      labelText: '123456',
+                                      labelText: 'Password (123456)',
                                     ),
                                      validator: (value){
                                        if(value != null){
@@ -141,11 +150,6 @@ class _LoginPageState extends State<LoginPage> {
                                         // password = 123456
                                         if(username == "akademioverflow" && password == "123456"){
                                           //Giris basarili
-                                          ScaffoldMessenger.of(context).showSnackBar(
-                                            const SnackBar(
-                                              content: Text("Giriş başarılı"),
-                                            ),
-                                          );
                                           Navigator.of(context).push(MaterialPageRoute(builder: (context) => const DerslerPage(),));
                                         }else{
                                           //Giris basarisiz
